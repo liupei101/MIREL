@@ -1,0 +1,78 @@
+task: clf # default setting, clf = classification
+cuda_id: 0 # 0 / 1, which gpu to use 
+seed: [42, 17, 26, 50, 82] # default setting, random seed, [42, 17, 26, 50, 82]
+
+wandb_dir: /home/user/repo/MIREL # the root dir of this codebase
+wandb_prj: MIREL-Experiment # wandb project name
+save_path: ./result/mirel-experiment/cifar10-ABMIL-vanilla # directory to save files
+save_prediction: True # if save predictions
+save_ins_prediction: True # if save instance-level results
+ins_pred_from: ins # instance prediction from which branch, one of ins / bag
+eins_frozen_feat: null # not valid
+
+# data loading related paths
+dataset_origin: cifar10
+cifar10_dataset_size: 6000-1000-2000 # train-val-test
+cifar10_target_number: 9
+cifar10_mean_bag_length: 10
+cifar10_var_bag_length: 2
+cifar10_mean_pos_ratio: 0.5
+cifar10_id_labels: 0-1-2-3-4-5-6-7-8-9
+cifar10_ood_ratio: 1.0
+cifar10_ood_origin: [svhn, dtd] # svhn, dtd 
+
+# network architecture
+net_dims: 1024-384-2 # in_dim -> hid_dim -> out_dim
+drop_rate: 0.0 # dropout rate
+backbone: ABMIL # use which network, one of DeepMIL / ABMIL / DSMIL
+use_feat_proj: cifar10
+init_wt: True # if initialize the network
+abmil_pooling: attention # pooling function, max / mean for DeepMIL; attention for ABMIL; ds for DSMIL.
+
+# EDL settings (not valid for vanilla MIL models)
+edl_pred_head: default
+edl_evidence_func: exp
+edl_evidence_sum: False
+edl_evidence_sum_separate: null
+edl_evidence_sum_aggregate: null
+
+# training loss
+loss_bce: True # if binary classification, use a BCE loss
+loss_smoothing: 0.0
+loss_bce_target_thresh: null
+
+# training loss, EDL-related settings (not valid for vanilla MIL models)
+loss_edl: False # False if it is a vanilla ABMIL model
+loss_edl_type: mse 
+loss_red_type: log-alpha # the loss to avoid zero-evidence regions
+loss_mse_fisher_coef: 0 # the coef of Fisher information loss in MSE 
+loss_use_kl_div: True # if use kl_div term for the main and auxiliary branch
+loss_annealing_steps: 10 # kl_coef = min(1.0, t / annealing_steps)
+loss_aux_coef: null # the coef of auxiliary instance-level branch
+
+# optimizer
+opt_name: adam # use which optimizer to train the network
+opt_lr: 0.0002 # learning rate
+opt_weight_decay: 0.00001 # weight decay
+
+# training setting
+epochs: 200 # 
+batch_size: 1
+bp_every_batch: 32
+num_workers: 4
+es_patience: 10 # Early stopping patience
+es_warmup: 0 # Early stopping warm up
+es_verbose: True # Early stopping verbose
+es_start_epoch: 0 # Early stopping epoch
+monitor_metrics: error+loss # loss/auc
+
+# LR Scheduler setting
+lrs_factor: 0.5
+lrs_patience: 5
+
+# Only changes them if you want a test mode
+test: False
+test_wandb_prj: MIREL-test # wandb project name of test mode
+test_path: test # dataset name you want to test, which should be a key in the npz file for data split
+test_load_path: ./directory/to/model_ckpt # path to load trained models
+test_save_path: ./directory/to/save/test_result # path to save test results

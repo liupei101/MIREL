@@ -1,0 +1,79 @@
+task: clf # default setting, clf = classification
+cuda_id: 0 # 0 / 1, which gpu to use 
+seed: [42, 17, 26, 50, 82] # default setting, random seed, [42, 17, 26, 50, 82]
+
+wandb_dir: /home/user/repo/MIREL # the root dir of this codebase
+wandb_prj: MIREL-Experiment # wandb project name
+save_path: ./result/mirel-experiment/c16-ABMIL-vanilla # directory to save files
+save_prediction: True # if save predictions
+save_ins_prediction: True # if save instance-level results
+ins_pred_from: ins # instance prediction from which branch, one of ins / bag
+eins_frozen_feat: null # not valid
+
+# data loading related paths
+dataset_origin: wsi
+path_patch: /NAS02/ExpData/camelyon16/feats-RN18-SimCL-tiles-l1-s256/pt_files # all instance features
+path_coord: /NAS02/ExpData/camelyon16/tiles-l1-s256/patches # all instance coordinates
+path_table: /NAS02/ExpData/camelyon16/table/camelyon16_insclf_label.csv # data label
+path_label: /NAS02/ExpData/camelyon16/tiles-l1-s256/patch_labels # patch-level labels
+feat_format: pt
+data_split_path: /NAS02/ExpData/camelyon16/table/c16_train_val_official_test_split.npz # sample split 
+data_split_seed: null # used to fill the '{}' in `data_split_path`
+soft_label_threshold: 0.2
+wsi_ood_origin: ['c16_synth_lighter', 'c16_synth_light', 'c16_synth_strong', 'prostate'] # c16_synth_xxx or prostate
+
+# network architecture
+net_dims: 512-256-2 # in_dim -> hid_dim -> out_dim
+drop_rate: 0.0 # dropout rate
+backbone: ABMIL # use which network, one of DeepMIL / ABMIL / DSMIL
+use_feat_proj: default
+init_wt: True # if initialize the network
+abmil_pooling: attention # pooling function, max / mean for DeepMIL; attention for ABMIL; ds for DSMIL.
+
+# EDL settings (not valid for vanilla MIL models)
+edl_pred_head: default
+edl_evidence_func: exp
+edl_evidence_sum: False
+edl_evidence_sum_separate: null
+edl_evidence_sum_aggregate: null
+
+# training loss
+loss_bce: True # if binary classification, use a BCE loss
+loss_smoothing: 0.0
+loss_bce_target_thresh: null
+
+# training loss, EDL-related settings (not valid for vanilla MIL models)
+loss_edl: False # False if it is a vanilla ABMIL model
+loss_edl_type: mse 
+loss_red_type: log-alpha # the loss to avoid zero-evidence regions
+loss_mse_fisher_coef: 0 # the coef of Fisher information loss in MSE 
+loss_use_kl_div: True # if use kl_div term for the main and auxiliary branch
+loss_annealing_steps: 10 # kl_coef = min(1.0, t / annealing_steps)
+loss_aux_coef: null # the coef of auxiliary instance-level branch
+
+# optimizer
+opt_name: adam # use which optimizer to train the network
+opt_lr: 0.0001 # learning rate
+opt_weight_decay: 0.00001 # weight decay
+
+# training setting
+epochs: 200 # 
+batch_size: 1
+bp_every_batch: 8
+num_workers: 4
+es_patience: 20 # Early stopping patience
+es_warmup: 0 # Early stopping warm up
+es_verbose: True # Early stopping verbose
+es_start_epoch: 0 # Early stopping epoch
+monitor_metrics: error+loss # loss/auc
+
+# LR Scheduler setting
+lrs_factor: 0.5
+lrs_patience: 10
+
+# Only changes them if you want a test mode
+test: False
+test_wandb_prj: MIREL-test # wandb project name of test mode
+test_path: test # dataset name you want to test, which should be a key in the npz file for data split
+test_load_path: ./directory/to/model_ckpt # path to load trained models
+test_save_path: ./directory/to/save/test_result # path to save test results
