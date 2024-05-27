@@ -2,7 +2,7 @@
 
 *International Conference on Machine Learning (ICML), 2024*
 
-[[Paper]](https://arxiv.org/abs/2405.04405) | [[Project Page]](https://github.com/liupei101/MIREL)
+[[Paper]](https://arxiv.org/abs/2405.04405) | [[Project Page]](https://github.com/liupei101/MIREL) | [[Uncertainty Analysis]](https://github.com/liupei101/MIREL?tab=readme-ov-file#bag-level-and-instance-level-uncertainty-analysis)
 
 **Note**: More materials, e.g., *project page* and *walkthrough notebooks*, are in preparation and will be released soon. Stay tuned.
 
@@ -11,6 +11,7 @@
 ---
 
 📚 Recent updates:
+- 24/05/28: upload experimental [files](https://github.com/liupei101/MIREL/blob/main/result/mirel-experiment/) and [Notebook - Bag-level-Uncertainty-Analysis](https://github.com/liupei101/MIREL/blob/main/notebook/Bag-level_Uncertainty_Analysis.ipynb)
 - 24/05/27: upload MIREL codes
 
 ## Running the code
@@ -21,6 +22,14 @@ python3 main.py --config config/mnist-bags/cfg_abmil_mirel.yml --handler clf --m
 ```
 
 The configuration files for running MIREL models with different bag datasets (`MNIST-Bags`, `CIFAR10-Bags`, and `CAMELYON16`) are provided in [here](https://github.com/liupei101/MIREL/blob/main/config/). Detailed description of each configuration is commented in these files. 
+
+All experimental files could be found in [here](https://github.com/liupei101/MIREL/blob/main/result/mirel-experiment/).
+
+## Bag-level and instance-level uncertainty analysis
+
+Please check
+- Bag-level uncertainty analysis: [Notebook - Bag-level-Uncertainty-Analysis](https://github.com/liupei101/MIREL/blob/main/notebook/Bag-level_Uncertainty_Analysis.ipynb)
+- Instance-level uncertainty analysis: [Notebook - Instance-level-Uncertainty-Analysis](https://github.com/liupei101/MIREL/blob/main/notebook/Instance-level_Uncertainty_Analysis.ipynb)
 
 ## Citation
 
