@@ -115,7 +115,7 @@ class ClfHandler(object):
                 self.aux_loss = partial(self.aux_loss, 
                     num_classes=dims[-1], annealing_step=kws_loss['annealing_steps'], 
                     c_fisher=kws_loss['mse_fisher_coef'], use_kl_div=kws_loss['use_kl_div'], 
-                    red_type=kws_loss['ins_red_type'], branch='instance', separate=self.aux_separate, 
+                    red_type=kws_loss['red_type'], branch='instance', separate=self.aux_separate, 
                     aggregate=cfg['edl_evidence_sum_aggregate']
                 )
             else:

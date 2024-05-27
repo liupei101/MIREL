@@ -1,0 +1,11 @@
+**************** MODEL METRICS ****************
+test/auc_pred        -->   0.9904520000000001
+test/acc_pred        -->   0.964
+test/loss_pred       -->   0.19383764266967773
+train/auc_pred       -->   0.9996160000000001
+train/acc_pred       -->   0.998
+train/loss_pred      -->   0.14055626094341278
+validation/auc_pred  -->   0.9995999999999999
+validation/acc_pred  -->   0.99
+validation/loss_pred -->   0.17383942008018494
+**************** MODEL METRICS ****************
