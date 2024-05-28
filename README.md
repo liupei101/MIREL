@@ -11,8 +11,8 @@
 ---
 
 📚 Recent updates:
-- 24/05/28: upload experimental [files](https://github.com/liupei101/MIREL/blob/main/result/mirel-experiment/) and [Notebook - Bag-level-Uncertainty-Analysis](https://github.com/liupei101/MIREL/blob/main/notebook/Bag-level_Uncertainty_Analysis.ipynb)
-- 24/05/27: upload MIREL codes
+- 24/05/28: Upload experimental [files](https://github.com/liupei101/MIREL/blob/main/result/mirel-experiment/), [Notebook - Bag-level-Uncertainty-Analysis](https://github.com/liupei101/MIREL/blob/main/notebook/Bag-level_Uncertainty_Analysis.ipynb), and [Notebook - Instance-level-Uncertainty-Analysis](https://github.com/liupei101/MIREL/blob/main/notebook/Instance-level_Uncertainty_Analysis.ipynb).
+- 24/05/27: Upload MIREL source codes
 
 ## Running the code
 
