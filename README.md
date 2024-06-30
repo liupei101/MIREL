@@ -8,7 +8,7 @@
 
 <!-- Insert a pipeline of your algorithm here if got one -->
 <div align="center">
-    <a href="https://"><img width="100%" height="auto" src="./docs/MIREL-overview.png"></a>
+    <a href="https://"><img width="60%" height="auto" src="./docs/MIREL-overview.png"></a>
 </div>
 
 ---
