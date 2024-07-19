@@ -2,7 +2,7 @@
 
 *International Conference on Machine Learning (ICML), 2024*
 
-[[Paper]](https://openreview.net/forum?id=cxiqxDnrCx) | [[Poster]](https://icml.cc/virtual/2024/poster/33575) | [[Uncertainty Analysis]](https://github.com/liupei101/MIREL?tab=readme-ov-file#bag-level-and-instance-level-uncertainty-analysis) | [[Citation]](https://github.com/liupei101/MIREL?tab=readme-ov-file#citation)
+[[Paper]](https://proceedings.mlr.press/v235/liu24ac.html) | [[Poster]](https://icml.cc/virtual/2024/poster/33575) | [[Uncertainty Analysis]](https://github.com/liupei101/MIREL?tab=readme-ov-file#bag-level-and-instance-level-uncertainty-analysis) | [[Citation]](https://github.com/liupei101/MIREL?tab=readme-ov-file#citation)
 
 **Abstract**: Uncertainty estimation (UE), as an effective means of quantifying predictive uncertainty, is crucial for safe and reliable decision-making, especially in high-risk scenarios. Existing UE schemes usually assume that there are completely-labeled samples to support fully-supervised learning. In practice, however, many UE tasks often have no sufficiently-labeled data to use, such as the Multiple Instance Learning (MIL) with only weak instance annotations. To bridge this gap, this paper, for the first time, addresses the weakly-supervised issue of Multi-Instance UE (MIUE) and proposes a new baseline scheme, *Multi-Instance Residual Evidential Learning* (MIREL). Particularly, at the fine-grained instance UE with only weak supervision, we derive a multi-instance residual operator through the Fundamental Theorem of Symmetric Functions. On this operator derivation, we further propose MIREL to jointly model the high-order predictive distribution at bag and instance levels for MIUE. Extensive experiments empirically demonstrate that our MIREL not only could often make existing MIL networks perform better in MIUE, but also could surpass representative UE methods by large margins, especially in instance-level UE tasks.
 
@@ -20,14 +20,14 @@
 
 ## Running the code
 
-Using the following command to load configurations from a yaml file and train the model:
+Use the following command to load configurations from a YAML file and train the model:
 ```bash
 python3 main.py --config config/mnist-bags/cfg_abmil_mirel.yml --handler clf --multi_run
 ```
 
-The configuration files for running MIREL models with different bag datasets (`MNIST-Bags`, `CIFAR10-Bags`, and `CAMELYON16`) are provided in [here](https://github.com/liupei101/MIREL/blob/main/config/). Detailed description of each configuration is commented in these files. 
+The configuration files for running MIREL models with different bag datasets (`MNIST-Bags`, `CIFAR10-Bags`, and `CAMELYON16`) are provided [here](https://github.com/liupei101/MIREL/blob/main/config/). A detailed description of each configuration is commented on in these files. 
 
-All experimental files could be found in [here](https://github.com/liupei101/MIREL/blob/main/result/mirel-experiment/).
+All experimental files can be found in [here](https://github.com/liupei101/MIREL/blob/main/result/mirel-experiment/).
 
 ## Bag-level and instance-level uncertainty analysis
 
@@ -39,15 +39,17 @@ Please check
 
 If you find this work helps you more or less, please cite it via
 ```
-@InProceedings{liu2024mirel,
-  title={Weakly-Supervised Residual Evidential Learning for Multi-Instance Uncertainty Estimation},
-  author={Liu, Pei and Ji, Luping},
-  booktitle={Proceedings of the 41st International Conference on Machine Learning},
-  year={2024},
-  series={Proceedings of Machine Learning Research},
-  publisher={PMLR},
+@InProceedings{pmlr-v235-liu24ac,
+    title = {Weakly-Supervised Residual Evidential Learning for Multi-Instance Uncertainty Estimation},
+    author = {Liu, Pei and Ji, Luping},
+    booktitle = {Proceedings of the 41st International Conference on Machine Learning},
+    pages = {31262--31292},
+    year = {2024},
+    volume = {235},
+    publisher = {Proceedings of Machine Learning Research},
+    url = {https://proceedings.mlr.press/v235/liu24ac.html}
 }
+
 ```
-or `P. Liu and L. Ji, "Weakly-Supervised Residual Evidential Learning for Multi-Instance Uncertainty Estimation," in Proceedings of the 41st International Conference on Machine Learning, 2024.`.
 
 Any issues can be sent via E-mail (yuukilp@163.com) or posted on the issue page.
